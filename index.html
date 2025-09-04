@@ -4,36 +4,164 @@
 <meta charset="UTF-8">
 <title>กิจกรรมคิดวิเคราะห์และแก้ปัญหา</title>
 <style>
-  body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; color: #333; margin:0; padding:0; }
-  .container { max-width: 800px; margin: 30px auto; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);}
-  h1 { text-align: center; color: #4a90e2; }
-  label { display: block; margin-top: 15px; font-weight: bold; }
-  textarea { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; resize: vertical; }
-  button { margin-top: 20px; padding: 12px 20px; background: #4a90e2; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; }
-  button:hover { background: #357ABD; }
+  body { 
+    font-family: 'Segoe UI', 'Prompt', sans-serif; 
+    background: linear-gradient(135deg, #e0f7fa, #f0f4f8); 
+    color: #333; 
+    margin:0; 
+    padding:0; 
+  }
+
+  .container { 
+    max-width: 850px; 
+    margin: 40px auto; 
+    padding: 30px; 
+    background: #fff; 
+    border-radius: 16px; 
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  }
+
+  h1 { 
+    text-align: center; 
+    color: #2563eb; 
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  h1::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #2563eb;
+    margin: 10px auto 0;
+    border-radius: 2px;
+  }
+
+  label { 
+    display: block; 
+    margin-top: 25px; 
+    font-weight: 600; 
+    color: #444;
+    font-size: 15px;
+  }
+
+  p.description { 
+    font-size: 13.5px; 
+    color: #666; 
+    margin-top: 6px; 
+  }
+
+  textarea { 
+    width: 100%; 
+    padding: 12px 14px; 
+    border-radius: 10px; 
+    border: 1.5px solid #d1d5db; 
+    resize: vertical; 
+    margin-top:8px; 
+    font-size: 14px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+  }
+  textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 8px rgba(37,99,235,0.2);
+    outline: none;
+  }
+
+  button { 
+    margin-top: 25px; 
+    padding: 14px 24px; 
+    background: linear-gradient(135deg, #4a90e2, #2563eb);
+    color: white; 
+    border: none; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    font-size: 16px; 
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(37,99,235,0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  button:hover { 
+    background: linear-gradient(135deg, #357ABD, #1d4ed8);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(37,99,235,0.3);
+  }
+
+  .game-section { 
+    margin-top: 30px; 
+    padding: 18px; 
+    background: #f1f5ff; 
+    border-radius: 12px; 
+    border-left: 5px solid #2563eb;
+  }
+  .game-section a { 
+    color: #2563eb; 
+    text-decoration: none; 
+    font-weight: bold; 
+    transition: color 0.3s ease;
+  }
+  .game-section a:hover {
+    color: #1e3a8a;
+  }
 </style>
+
 </head>
 <body>
 <div class="container">
   <h1>แบบฝึกคิดวิเคราะห์และแก้ปัญหา</h1>
   
+  <!-- 1. Three-Step Back -->
   <label>1. ถอยหลัง 3 ก้าว (Three-Step Back)</label>
+  <p class="description">
+    จินตนาการว่าคุณกำลังเผชิญกับปัญหาหนึ่ง ลองถอยหลัง 3 ก้าวเพื่อมองจากหลายมุมมอง: 
+    ก้าว 1 = มุมมองของตัวเอง, ก้าว 2 = มุมมองของอีกฝ่าย, ก้าว 3 = มุมมองของคนนอก  
+    แล้วตอบความคิดของคุณในแต่ละมุมมอง
+  </p>
   <textarea id="step1" placeholder="ก้าว 1: ...&#10;ก้าว 2: ...&#10;ก้าว 3: ..."></textarea>
   
+  <!-- 2. Pros & Cons + Time Perspective -->
   <label>2. ข้อดี-ข้อเสีย + มุมมองเวลา</label>
-  <textarea id="prosCons" placeholder="ข้อดี-ข้อเสีย และผลลัพธ์ 1 สัปดาห์ / 1 เดือน / 1 ปี"></textarea>
+  <p class="description">
+    พิจารณาวิธีแก้ปัญหาหลายวิธี เขียนข้อดี-ข้อเสียของแต่ละวิธี และคาดการณ์ผลลัพธ์ในระยะเวลา 
+    1 สัปดาห์ / 1 เดือน / 1 ปี
+  </p>
+  <textarea id="prosCons" placeholder="ข้อดี-ข้อเสียและผลลัพธ์ระยะเวลา 1 สัปดาห์ / 1 เดือน / 1 ปี"></textarea>
   
+  <!-- 3. 5 Whys Technique -->
   <label>3. เกม 5 ทำไม (5 Whys Technique)</label>
-  <textarea id="fiveWhys" placeholder="เขียนคำถามและคำตอบ 5 ครั้ง"></textarea>
+  <p class="description">
+    เลือกปัญหาที่คุณเผชิญ ตั้งคำถาม “ทำไม” ติดต่อกัน 5 ครั้ง เพื่อค้นหาสาเหตุรากลึกของปัญหา
+  </p>
+  <textarea id="fiveWhys" placeholder="คำถาม-คำตอบ 5 ครั้ง"></textarea>
   
+  <!-- 4. What-If Game -->
   <label>4. เกมสมมติฐาน (What-If Game)</label>
+  <p class="description">
+    ตั้งสถานการณ์สมมติ เช่น “ถ้าคุณติดอยู่บนเกาะร้าง มีกระเป๋าแค่ 1 ใบ จะใส่อะไร?”  
+    คิดคำตอบพร้อมเหตุผลว่าทำไมคุณถึงเลือกวิธีนี้
+  </p>
   <textarea id="whatIf" placeholder="คำตอบและเหตุผล"></textarea>
   
+  <!-- 5. Reflection -->
   <label>5. การสะท้อนผล (Reflection)</label>
+  <p class="description">
+    หลังทำกิจกรรมทั้งหมด ตอบคำถามสั้นๆ: คุณได้เรียนรู้อะไร วิธีไหนได้ผลที่สุด และครั้งต่อไปคุณจะทำอะไรใหม่
+  </p>
   <textarea id="reflection" placeholder="คุณได้เรียนรู้อะไร? วิธีที่ได้ผลที่สุด? ครั้งต่อไปจะทำอะไรใหม่?"></textarea>
   
-  <button onclick="submitForm()">ส่งข้อมูล</button>
+  <!-- 6. Game Section -->
+  <div class="game-section">
+    <p>เล่นเกมคลายเครียด: <a href="https://th.crazygames.com/%E0%B9%80%E0%B8%81%E0%B8%A1/seek-find-hidden-object-game" target="_blank">คลิกที่นี่เพื่อเล่นเกมหาสิ่งของ</a></p>
+    <label>ความรู้สึกหลังเล่นเกม</label>
+    <textarea id="gameFeeling" placeholder="คุณรู้สึกผ่อนคลายขึ้นไหม? เกมช่วยอะไรได้บ้าง?"></textarea>
+  </div>
   
+  <button onclick="submitForm()">ส่งข้อมูล</button>
   <p id="status" style="margin-top:20px;"></p>
 </div>
 
@@ -44,10 +172,12 @@
       prosCons: document.getElementById("prosCons").value,
       fiveWhys: document.getElementById("fiveWhys").value,
       whatIf: document.getElementById("whatIf").value,
-      reflection: document.getElementById("reflection").value
+      reflection: document.getElementById("reflection").value,
+      gameFeeling: document.getElementById("gameFeeling").value
     };
     
-    const url = "https://script.google.com/macros/s/AKfycbyLtNBgX6TPLmbVgcd-VYoGwKlIpMWUdNThObKSuzT1iqh3IUdRWCIFKi7X463F5hA/exec"; // <-- ใส่ URL Web App ตรงนี้
+    // ใส่ URL ของ Google Apps Script Web App ที่ deploy แล้ว
+    const url = "https://script.google.com/macros/s/AKfycbxdCAnPBIppuSXaMp_pRyOaCVzhxXel3oEw4NFQp4N1PCDUWJxZPCsx8dDjllJpfLEz/exec"; 
      
     try {
       const res = await fetch(url, {
@@ -58,6 +188,8 @@
       const result = await res.json();
       if(result.status === "success") {
         document.getElementById("status").innerText = "ส่งข้อมูลเรียบร้อย 🎉";
+        // เคลียร์ฟอร์มหลังส่ง
+        document.querySelectorAll('textarea').forEach(t => t.value = '');
       } else {
         document.getElementById("status").innerText = "เกิดข้อผิดพลาด ❌";
       }
