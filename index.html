@@ -2,89 +2,105 @@
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>กิจกรรมคิดวิเคราะห์และแก้ปัญหา</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ฝึกคิดวิเคราะห์และแก้ปัญหา</title>
+<!-- เปลี่ยนไอคอนเว็บไซต์ -->
+<link rel="icon" href="https://img.icons8.com/fluency/48/000000/brain.png"/>    
 <style>
-  body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; color: #333; margin:0; padding:0; }
-  .container { max-width: 800px; margin: 30px auto; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);}
-  h1 { text-align: center; color: #4a90e2; }
-  label { display: block; margin-top: 20px; font-weight: bold; }
-  p.description { font-size: 14px; color: #555; margin-top: 5px; }
-  textarea { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; resize: vertical; margin-top:5px; }
-  button { margin-top: 20px; padding: 12px 20px; background: #4a90e2; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; }
-  button:hover { background: #357ABD; }
-  .game-section { margin-top: 25px; padding: 15px; background: #e8f0fe; border-radius: 8px; }
-  .game-section a { color: #4a90e2; text-decoration: none; font-weight: bold; }
+body { font-family: 'Segoe UI', sans-serif; background:#f0f4f8; margin:0; padding:0;}
+.container { max-width:800px; margin:30px auto; padding:20px; background:#fff; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+h2 { color:#333; }
+section { margin-bottom:30px; }
+textarea { width:100%; height:60px; margin:5px 0; padding:8px; border-radius:6px; border:1px solid #ccc; }
+button { padding:10px 20px; border:none; background:#007bff; color:#fff; border-radius:6px; cursor:pointer; }
+button:hover { background:#0056b3; }
+iframe { width:100%; height:500px; border:none; margin-top:20px; }
 </style>
 </head>
 <body>
+
 <div class="container">
-  <h1>แบบฝึกคิดวิเคราะห์และแก้ปัญหา</h1>
-  
-  <label>1. ถอยหลัง 3 ก้าว (Three-Step Back)</label>
-  <p class="description">ลองถอยหลัง 3 ก้าว มองปัญหาจากหลายมุมมอง (ตัวเอง, อีกฝ่าย, คนนอก)</p>
-  <textarea id="step1"></textarea>
-  
-  <label>2. ข้อดี-ข้อเสีย + มุมมองเวลา</label>
-  <p class="description">เขียนข้อดี-ข้อเสีย และผลลัพธ์ใน 1 สัปดาห์ / 1 เดือน / 1 ปี</p>
-  <textarea id="prosCons"></textarea>
-  
-  <label>3. เกม 5 ทำไม (5 Whys Technique)</label>
-  <p class="description">ตั้งคำถาม "ทำไม" 5 ครั้ง เพื่อตามหาสาเหตุรากลึกของปัญหา</p>
-  <textarea id="fiveWhys"></textarea>
-  
-  <label>4. เกมสมมติฐาน (What-If Game)</label>
-  <p class="description">ตั้งสถานการณ์สมมติ เช่น ติดเกาะร้าง คุณจะเลือกพกอะไร?</p>
-  <textarea id="whatIf"></textarea>
-  
-  <label>5. การสะท้อนผล (Reflection)</label>
-  <p class="description">คุณได้เรียนรู้อะไร? วิธีไหนเวิร์คที่สุด? ครั้งต่อไปจะลองอะไรใหม่?</p>
-  <textarea id="reflection"></textarea>
-  
-  <div class="game-section">
-    <p>🎮 เล่นเกมคลายเครียด: 
-      <a href="https://th.crazygames.com/%E0%B9%80%E0%B8%81%E0%B8%A1/seek-find-hidden-object-game" target="_blank">
-        เกมหาสิ่งของ
-      </a>
-    </p>
-    <label>ความรู้สึกหลังเล่นเกม</label>
-    <textarea id="gameFeeling" placeholder="คุณรู้สึกผ่อนคลายขึ้นไหม? เกมช่วยอะไรได้บ้าง?"></textarea>
-  </div>
-  
-  <button onclick="submitForm()">ส่งข้อมูล</button>
-  <p id="status" style="margin-top:20px; font-weight:bold;"></p>
-</div>
+<h1>ฝึกคิดวิเคราะห์และแก้ปัญหา</h1>
+
+<!-- เกม 1: ถอยหลัง 3 ก้าว -->
+<section>
+<h2>1. ถอยหลัง 3 ก้าว (3-step Backward Thinking)</h2>
+<p>จินตนาการว่าคุณยืนต่อหน้าปัญหาและถอยหลังทีละก้าว:</p>
+<textarea placeholder="ก้าว 1: มุมมองของคุณ"></textarea>
+<textarea placeholder="ก้าว 2: มุมมองของอีกฝ่าย"></textarea>
+<textarea placeholder="ก้าว 3: มุมมองของคนนอก"></textarea>
+</section>
+
+<!-- เกม 2: ข้อดี-ข้อเสีย + มุมมองเวลา -->
+<section>
+<h2>2. ข้อดี-ข้อเสีย + มุมมองเวลา</h2>
+<p>เขียนข้อดี-ข้อเสียของวิธีแก้ปัญหาที่คุณคิด แล้วมองผลลัพธ์ใน 3 ระยะ:</p>
+<textarea placeholder="ข้อดีของวิธีแก้ปัญหา"></textarea>
+<textarea placeholder="ข้อเสียของวิธีแก้ปัญหา"></textarea>
+<textarea placeholder="ผล 1 สัปดาห์"></textarea>
+<textarea placeholder="ผล 1 เดือน"></textarea>
+<textarea placeholder="ผล 1 ปี"></textarea>
+</section>
+
+<!-- เกม 3: 5 ทำไม? -->
+<section>
+<h2>3. เกม 5 ทำไม? (5 Whys)</h2>
+<p>เขียนปัญหาลงมา แล้วถามตัวเองว่าทำไม 5 ครั้ง:</p>
+<textarea placeholder="ทำไมครั้งที่ 1"></textarea>
+<textarea placeholder="ทำไมครั้งที่ 2"></textarea>
+<textarea placeholder="ทำไมครั้งที่ 3"></textarea>
+<textarea placeholder="ทำไมครั้งที่ 4"></textarea>
+<textarea placeholder="ทำไมครั้งที่ 5"></textarea>
+</section>
+
+<!-- เกม 4: What-If Game -->
+<section>
+<h2>4. เกมสมมติฐาน (What-If Game)</h2>
+<p>ตั้งสถานการณ์สมมติและคิดคำตอบ:</p>
+<textarea placeholder="คำตอบและเหตุผล"></textarea>
+</section>
+
+<!-- เกม 5: Reflection -->
+<section>
+<h2>5. การสะท้อนผล (Reflection)</h2>
+<p>ตอบคำถามสั้น ๆ เกี่ยวกับการเรียนรู้ของคุณ:</p>
+<textarea placeholder="คุณได้เรียนรู้อะไรเกี่ยวกับตัวเอง?"></textarea>
+<textarea placeholder="วิธีไหนที่ได้ผลดีที่สุดสำหรับคุณ?"></textarea>
+<textarea placeholder="ครั้งต่อไปคุณจะลองทำอะไรใหม่ ๆ บ้าง?"></textarea>
+</section>
+
+<!-- เกมผ่อนคลาย -->
+<section>
+<h2>6. เกมผ่อนคลาย: หาสิ่งของที่ซ่อนอยู่</h2>
+<p>คลายเครียดและฝึกสมาธิด้วยเกม:</p>
+<iframe src="https://th.crazygames.com/embed/seek-find-hidden-object-game" allowfullscreen></iframe>
+</section>
+
+<!-- ปุ่มส่งข้อมูลไป GAS -->
+<button id="submitBtn">ส่งข้อมูลไป Google Sheets</button>
 
 <script>
-  async function submitForm() {
-    const data = {
-      step1: document.getElementById("step1").value,
-      prosCons: document.getElementById("prosCons").value,
-      fiveWhys: document.getElementById("fiveWhys").value,
-      whatIf: document.getElementById("whatIf").value,
-      reflection: document.getElementById("reflection").value,
-      gameFeeling: document.getElementById("gameFeeling").value
-    };
-    
-    const url = "https://script.google.com/macros/s/AKfycbyLCiLX-TYYU44LXhXJejfXs8d7ANBEWhMIUXcJ__ViuGykxHOVcJpo9vnFnou7Ux0r/exec"; // 🔗 ใส่ URL จากการ Deploy
-    
-    try {
-      const res = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: { "Content-Type": "application/json" }
-      });
-      const result = await res.json();
-      if(result.status === "success") {
-        document.getElementById("status").innerText = "✅ ส่งข้อมูลเรียบร้อย";
-        document.querySelectorAll('textarea').forEach(t => t.value = '');
-      } else {
-        document.getElementById("status").innerText = "❌ เกิดข้อผิดพลาด";
-      }
-    } catch(e) {
-      document.getElementById("status").innerText = "⚠️ ไม่สามารถเชื่อมต่อ Web App";
-      console.error(e);
-    }
+// ตัวอย่างการส่งข้อมูลไป Google Apps Script
+const webAppUrl = 'https://script.google.com/macros/s/AKfycbz0_p1XBFYtaj6RMT6cCUxiKXySHyonmJtZqhtkOTEVwV0hcvKTTFz3iYEO5B5gIn0k/exec'; // ใส่ URL ของคุณ
+
+document.getElementById('submitBtn').onclick = async () => {
+  const textareas = document.querySelectorAll('textarea');
+  const data = Array.from(textareas).map((ta,i) => ({id:i+1, value:ta.value}));
+
+  try {
+    const res = await fetch(webAppUrl, {
+      method: 'POST',
+      body: JSON.stringify({answers: data}),
+      headers: {'Content-Type':'application/json'}
+    });
+    const result = await res.json();
+    alert('ส่งสำเร็จ: ' + JSON.stringify(result));
+  } catch (err) {
+    alert('เกิดข้อผิดพลาด: ' + err);
   }
+};
 </script>
+
+</div>
 </body>
 </html>
