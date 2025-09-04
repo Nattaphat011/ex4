@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>กิจกรรมคิดวิเคราะห์และแก้ปัญหา</title>
+<style>
+  body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; color: #333; margin:0; padding:0; }
+  .container { max-width: 800px; margin: 30px auto; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);}
+  h1 { text-align: center; color: #4a90e2; }
+  label { display: block; margin-top: 15px; font-weight: bold; }
+  textarea { width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc; resize: vertical; }
+  button { margin-top: 20px; padding: 12px 20px; background: #4a90e2; color: white; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; }
+  button:hover { background: #357ABD; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>แบบฝึกคิดวิเคราะห์และแก้ปัญหา</h1>
+  
+  <label>1. ถอยหลัง 3 ก้าว (Three-Step Back)</label>
+  <textarea id="step1" placeholder="ก้าว 1: ...&#10;ก้าว 2: ...&#10;ก้าว 3: ..."></textarea>
+  
+  <label>2. ข้อดี-ข้อเสีย + มุมมองเวลา</label>
+  <textarea id="prosCons" placeholder="ข้อดี-ข้อเสีย และผลลัพธ์ 1 สัปดาห์ / 1 เดือน / 1 ปี"></textarea>
+  
+  <label>3. เกม 5 ทำไม (5 Whys Technique)</label>
+  <textarea id="fiveWhys" placeholder="เขียนคำถามและคำตอบ 5 ครั้ง"></textarea>
+  
+  <label>4. เกมสมมติฐาน (What-If Game)</label>
+  <textarea id="whatIf" placeholder="คำตอบและเหตุผล"></textarea>
+  
+  <label>5. การสะท้อนผล (Reflection)</label>
+  <textarea id="reflection" placeholder="คุณได้เรียนรู้อะไร? วิธีที่ได้ผลที่สุด? ครั้งต่อไปจะทำอะไรใหม่?"></textarea>
+  
+  <button onclick="submitForm()">ส่งข้อมูล</button>
+  
+  <p id="status" style="margin-top:20px;"></p>
+</div>
+
+<script>
+  async function submitForm() {
+    const data = {
+      step1: document.getElementById("step1").value,
+      prosCons: document.getElementById("prosCons").value,
+      fiveWhys: document.getElementById("fiveWhys").value,
+      whatIf: document.getElementById("whatIf").value,
+      reflection: document.getElementById("reflection").value
+    };
+    
+    const url = "https://script.google.com/macros/s/AKfycbyLtNBgX6TPLmbVgcd-VYoGwKlIpMWUdNThObKSuzT1iqh3IUdRWCIFKi7X463F5hA/exec"; // <-- ใส่ URL Web App ตรงนี้
+     
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" }
+      });
+      const result = await res.json();
+      if(result.status === "success") {
+        document.getElementById("status").innerText = "ส่งข้อมูลเรียบร้อย 🎉";
+      } else {
+        document.getElementById("status").innerText = "เกิดข้อผิดพลาด ❌";
+      }
+    } catch(e) {
+      document.getElementById("status").innerText = "ไม่สามารถเชื่อมต่อ Web App ❌";
+      console.error(e);
+    }
+  }
+</script>
+</body>
+</html>
