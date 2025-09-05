@@ -157,9 +157,6 @@
     <h2>2. ข้อดี-ข้อเสีย + มุมมองเวลา</h2>
     <textarea id="pros" placeholder="ข้อดีของวิธีแก้ปัญหา"></textarea>
     <textarea id="cons" placeholder="ข้อเสียของวิธีแก้ปัญหา"></textarea>
-    <textarea id="week" placeholder="ผล 1 สัปดาห์"></textarea>
-    <textarea id="month" placeholder="ผล 1 เดือน"></textarea>
-    <textarea id="year" placeholder="ผล 1 ปี"></textarea>
   </section>
 
   <!-- เกม 3: 5 ทำไม? -->
@@ -175,10 +172,10 @@
   </section>
 
   <!-- เกม 4: What-If Game -->
-  <section>
+  <!-- <section>
     <h2>4. เกมสมมติฐาน (What-If Game)</h2>
     <textarea id="whatif" placeholder="คำตอบและเหตุผล"></textarea>
-  </section>
+  </section> -->
 
   <!-- เกม 5: Reflection -->
   <section>
@@ -197,11 +194,12 @@
     <a href="https://th.crazygames.com/embed/seek-find-hidden-object-game" target="_blank">คลิกที่นี่เพื่อเล่นเกม</a>
     <!-- บอกความรู้สึกหลังจากเล่นแล้ว ช่วยคลายเครียดในระดับไหน -->
     <p>หลังจากเล่นเกมนี้แล้ว คุณรู้สึกผ่อนคลายขึ้นในระดับไหน (1-10)</p>
-    <textarea id="seek-find-hidden-object-game" placeholder="ระดับไหน">ระดับไหน</textarea>
+    <input type="text" id="level" placeholder="1-10">
+    <p><em>หมายเหตุ: การเล่นเกมนี้เป็นเพียงกิจกรรมเสริมเพื่อช่วยผ่อนคลายจิตใจเท่านั้น ไม่ได้มีวัตถุประสงค์ในการแก้ปัญหาโดยตรง</em></p>
   </section>
 
   <!-- ปุ่มส่งข้อมูลไป GAS -->
-  <button id="submitBtn">ส่งข้อมูลไป Google Sheets</button>
+  <button id="submitBtn">บันทึกผล</button>
 </div>
 
 <script>
@@ -215,19 +213,17 @@
       { question: 'เข้าใจถึงความคิดแนวทางมากขึ้นหรือไม่', value: document.querySelector('input[name="understand"]:checked') ? document.querySelector('input[name="understand"]:checked').value : '' },
       { question: 'ข้อดีของวิธีแก้ปัญหา', value: document.getElementById('pros').value },
       { question: 'ข้อเสียของวิธีแก้ปัญหา', value: document.getElementById('cons').value },
-      { question: 'ผล 1 สัปดาห์', value: document.getElementById('week').value },
-      { question: 'ผล 1 เดือน', value: document.getElementById('month').value },
-      { question: 'ผล 1 ปี', value: document.getElementById('year').value },
       { question: 'ทำไมครั้งที่ 1', value: document.getElementById('why1').value },
       { question: 'ทำไมครั้งที่ 2', value: document.getElementById('why2').value },
       { question: 'ทำไมครั้งที่ 3', value: document.getElementById('why3').value },
       { question: 'ทำไมครั้งที่ 4', value: document.getElementById('why4').value },
       { question: 'ทำไมครั้งที่ 5', value: document.getElementById('why5').value },
-      { question: 'คำตอบและเหตุผล', value: document.getElementById('whatif').value },
+      // { question: 'คำตอบและเหตุผล', value: document.getElementById('whatif').value },
       { question: 'คุณได้เรียนรู้อะไรเกี่ยวกับตัวเอง?', value: document.getElementById('learn').value },
       { question: 'วิธีไหนที่ได้ผลดีที่สุดสำหรับคุณ?', value: document.getElementById('best').value },
       { question: 'ครั้งต่อไปคุณจะลองทำอะไรใหม่ ๆ บ้าง?', value: document.getElementById('next').value },
-      { question: 'ระดับไหน', value: document.getElementById('seek-find-hidden-object-game').value }
+      { question: 'ระดับไหน', value: document.getElementById('level').value }
+
     ];
 
     try {
@@ -247,6 +243,5 @@
     }
   };
 </script>
-
 </body>
 </html>
