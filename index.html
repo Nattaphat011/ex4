@@ -6,18 +6,18 @@
   <title>ฝึกคิดวิเคราะห์และแก้ปัญหา</title>
   <link rel="icon" href="https://img.icons8.com/fluency/48/000000/brain.png"/>
  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;700&display=swap');
     :root {
       --primary: #00bcd4;
       --secondary: #ff4081;
       --accent: #ffd740;
-      --bg: #f9fbfd;
       --text: #333;
       --card-bg: #fff;
     }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg);
+      font-family: 'Kanit', sans-serif;
+      background: linear-gradient(135deg, #63b1ff 0%, #ff6c3b 100%);
       margin: 0;
       padding: 0;
       color: var(--text);
@@ -192,7 +192,10 @@
   <!-- เกมผ่อนคลาย -->
   <section>
     <h2>6. เกมผ่อนคลาย: หาสิ่งของที่ซ่อนอยู่</h2>
-    <iframe src="https://th.crazygames.com/embed/seek-find-hidden-object-game" allowfullscreen></iframe>
+    <a href="https://th.crazygames.com/embed/seek-find-hidden-object-game">Link Game กดได้เลย</a> 
+    <!-- บอกความรู้สึกหลังจากเล่นแล้ว ช่วยคลายเครียดในระดับไหน -->
+    <p>หลังจากเล่นเกมนี้แล้ว คุณรู้สึกผ่อนคลายขึ้นในระดับไหน (1-10)</p>
+    <textarea id="seek-find-hidden-object-game" placeholder="ระดับไหน">ระดับไหน</textarea>
   </section>
 
   <!-- ปุ่มส่งข้อมูลไป GAS -->
@@ -200,7 +203,7 @@
 </div>
 
 <script>
-  const webAppUrl = 'https://script.google.com/macros/s/AKfycbzPY49MPKiHB6V_4IZO7-NAPzcoJQaHYJK_7gWucXKbnkZgsKMahx-V9-lJzrbRKW10/exec';
+  const webAppUrl = 'https://script.google.com/macros/s/AKfycbybGeyrcqXxTKy6b83E-Dc7rDC5DUY1bPotZfxSqJxd7eGYPcRX0lW1sYodb6tjrSg/exec';
 
   document.getElementById('submitBtn').onclick = async () => {
     const data = [
@@ -221,7 +224,8 @@
       { question: 'คำตอบและเหตุผล', value: document.getElementById('whatif').value },
       { question: 'คุณได้เรียนรู้อะไรเกี่ยวกับตัวเอง?', value: document.getElementById('learn').value },
       { question: 'วิธีไหนที่ได้ผลดีที่สุดสำหรับคุณ?', value: document.getElementById('best').value },
-      { question: 'ครั้งต่อไปคุณจะลองทำอะไรใหม่ ๆ บ้าง?', value: document.getElementById('next').value }
+      { question: 'ครั้งต่อไปคุณจะลองทำอะไรใหม่ ๆ บ้าง?', value: document.getElementById('next').value },
+      { question: 'ระดับไหน', value: document.getElementById('seek-find-hidden-object-game').value }
     ];
 
     try {
