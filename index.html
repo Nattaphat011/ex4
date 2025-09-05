@@ -8,8 +8,8 @@
  <style>
   @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;700&display=swap');
     :root {
-      --primary: #00bcd4;
-      --secondary: #ff4081;
+      --primary: #5becff;
+      --secondary: #ff70a0;
       --accent: #ffd740;
       --text: #333;
       --card-bg: #fff;
@@ -17,7 +17,7 @@
 
     body {
       font-family: 'Kanit', sans-serif;
-      background: linear-gradient(135deg, #84c1ff 0%, #2888ff 100%);
+      background: linear-gradient(135deg, #fcaf17 0%, #ffe25f 100%);
       margin: 0;
       padding: 0;
       color: var(--text);
@@ -82,7 +82,7 @@
     textarea:focus {
       border-color: var(--secondary);
       outline: none;
-      box-shadow: 0 0 6px rgba(255,64,129,0.4);
+      box-shadow: 0 0 6px rgba(221, 0, 255, 0.4);
     }
 
     label {
@@ -201,7 +201,7 @@
 </div>
 
 <script>
-  const webAppUrl = 'https://script.google.com/macros/s/AKfycby2wV-6RzKuT6TQ_U4fRl37rBqgUNJ-gzp4VKmjhhOLscCFVZlDTi0oyfFnp138z5Wp/exec';
+  const webAppUrl = 'https://script.google.com/macros/s/AKfycbyunu74M5WEDBo6_dHuSFrmHmG_c5ynwi7sg3UqKskrjvePQi5qygfuCohGiDxu2rrD/exec';
 
   document.getElementById('submitBtn').onclick = async () => {
     const data = [
@@ -216,28 +216,25 @@
       { question: 'ทำไมครั้งที่ 3', value: document.getElementById('why3').value },
       { question: 'ทำไมครั้งที่ 4', value: document.getElementById('why4').value },
       { question: 'ทำไมครั้งที่ 5', value: document.getElementById('why5').value },
-      // { question: 'คำตอบและเหตุผล', value: document.getElementById('whatif').value },
       { question: 'คุณได้เรียนรู้อะไรเกี่ยวกับตัวเอง?', value: document.getElementById('learn').value },
       { question: 'วิธีไหนที่ได้ผลดีที่สุดสำหรับคุณ?', value: document.getElementById('best').value },
       { question: 'ครั้งต่อไปคุณจะลองทำอะไรใหม่ ๆ บ้าง?', value: document.getElementById('next').value },
       { question: 'ระดับไหน', value: document.getElementById('level').value }
-
     ];
 
+    const params = encodeURIComponent(JSON.stringify({ answers: data }));
+
     try {
-      const res = await fetch(webAppUrl, {
-        method: 'POST',
-        body: JSON.stringify({ answers: data }),
-        headers: { 'Content-Type': 'application/json' }
-      });
+      const res = await fetch(`${webAppUrl}?data=${params}`);
       const result = await res.json();
-      if (result.status === 'success') {
+
+      if (result.status === "success") {
         alert(`ส่งสำเร็จ! ข้อมูลถูกบันทึกในแถวที่ ${result.row}`);
       } else {
-        alert('เกิดข้อผิดพลาดในการส่งข้อมูล');
+        alert("เกิดข้อผิดพลาดในการส่งข้อมูล");
       }
     } catch (err) {
-      alert('ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์');
+      alert("ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์");
     }
   };
 </script>
