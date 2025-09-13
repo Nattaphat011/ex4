@@ -22,7 +22,17 @@
     50% {background-position: 100% 50%;}
     100% {background-position: 0% 50%;}
   }
-
+ .floating-img {
+      display: block;
+      margin: 0 auto 25px auto;
+      width: 150px;
+      animation: float 3s ease-in-out infinite;
+      max-width: 40%;
+    }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
   /* Hero Section */
   .hero {
     text-align: center;
@@ -174,7 +184,10 @@
      id="myImage">
 <!-- หมายเหตุสามารถแตะรูปภาพเพื่อขยายภาพได้ -->
  <em> (สามารถแตะรูปภาพเพื่อขยายภาพได้) </em>
-
+  <!-- โลโก้ -->
+  <img src="images/4.png"
+       alt="โลโก้วิทยาลัย"
+       class="floating-img">
 
      <div id="imgModal" class="img-modal">
   <span class="img-close">&times;</span>
