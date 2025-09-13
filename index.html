@@ -11,10 +11,10 @@
   body {
     margin: 0;
     font-family: 'Kanit', sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+    background: linear-gradient(135deg, #fce7f3, #e0f2fe, #ede9fe, #fef9c3);
     background-size: 400% 400%;
-    animation: bgShift 15s ease infinite;
-    color: #f8fafc;
+    animation: bgShift 12s ease infinite;
+    color: #444;
     line-height: 1.7;
   }
   @keyframes bgShift {
@@ -27,19 +27,20 @@
   .hero {
     text-align: center;
     padding: 80px 20px 60px;
-    position: relative;
-    background: linear-gradient(145deg, rgba(99,102,241,0.3), rgba(236,72,153,0.3));
+    background: linear-gradient(145deg, rgba(254,205,211,0.6), rgba(209,213,255,0.6));
     backdrop-filter: blur(12px);
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
   }
   .hero h1 {
-    font-size: 3rem;
-    color: #fff;
-    text-shadow: 0 0 25px rgba(255,255,255,0.4);
-    margin-bottom: 20px;
+    font-size: 2.7rem;
+    color: #374151;
+    margin-bottom: 15px;
   }
   .hero p {
-    font-size: 1.25rem;
-    color: #cbd5e1;
+    font-size: 1.2rem;
+    color: #6b7280;
   }
 
   /* Container */
@@ -47,30 +48,40 @@
     max-width: 950px;
     margin: -40px auto 50px;
     padding: 30px;
-    border-radius: 24px;
-    background: rgba(255,255,255,0.08);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-    backdrop-filter: blur(18px);
+    border-radius: 30px;
+    background: rgba(255,255,255,0.85);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   }
 
   /* Sections */
   section {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.15);
+    background: #fff;
+    border: 3px solid transparent;
+    border-radius: 22px;
     padding: 25px;
-    border-radius: 20px;
     margin-bottom: 35px;
-    transition: transform .3s, box-shadow .3s;
+    background-clip: padding-box;
+    position: relative;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
   }
-  section:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.1) inset;
+  section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 22px;
+    padding: 2px;
+    background: linear-gradient(135deg, #fbcfe8, #a5f3fc, #c4b5fd, #fde68a);
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
   }
 
   h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     margin-bottom: 15px;
-    background: linear-gradient(90deg,#a78bfa,#ec4899,#facc15);
+    background: linear-gradient(90deg,#f472b6,#60a5fa,#a78bfa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -78,26 +89,20 @@
   textarea, input[type="text"] {
     width: 100%;
     padding: 14px;
-    border-radius: 12px;
-    border: none;
-    background: rgba(255,255,255,0.1);
-    color: #f8fafc;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    background: #fafafa;
+    color: #374151;
     margin-top: 10px;
     margin-bottom: 20px;
     font-size: 1rem;
-    backdrop-filter: blur(5px);
-    transition: 0.3s;
+    transition: all 0.3s;
   }
   textarea:focus, input:focus {
     outline: none;
-    background: rgba(255,255,255,0.15);
-    box-shadow: 0 0 8px #818cf8;
-  }
-
-  label {
-    font-weight: 500;
-    display: block;
-    margin-bottom: 10px;
+    border: 1px solid #a78bfa;
+    box-shadow: 0 0 8px rgba(167,139,250,0.4);
+    background: #fff;
   }
 
   button {
@@ -105,25 +110,21 @@
     width: 100%;
     padding: 15px;
     border: none;
-    border-radius: 18px;
-    background: linear-gradient(135deg,#6366f1,#ec4899,#facc15);
-    background-size: 200% 200%;
-    color: #fff;
-    font-size: 1.2rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg,#f9a8d4,#93c5fd,#c4b5fd,#fde68a);
+    background-size: 250% 250%;
+    color: #374151;
+    font-size: 1.15rem;
     font-weight: 600;
     cursor: pointer;
     margin-top: 25px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    animation: gradientShift 6s ease infinite;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    animation: gradientShift 8s ease infinite;
+    transition: transform 0.2s;
   }
   button:hover {
     transform: scale(1.04);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-  }
-  @keyframes gradientShift {
-    0% {background-position:0% 50%;}
-    50% {background-position:100% 50%;}
-    100% {background-position:0% 50%;}
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
   }
 
   /* Image Modal */
@@ -131,9 +132,9 @@
     display: block;
     margin: 0 auto 20px;
     width: 100%;
-    max-width: 200px;
-    border-radius: 20px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.5), 0 0 20px rgba(255,255,255,0.3);
+    max-width: 180px;
+    border-radius: 25px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
     cursor: zoom-in;
   }
 
@@ -142,7 +143,7 @@
     position: fixed;
     z-index: 1000;
     left:0;top:0;width:100%;height:100%;
-    background: rgba(0,0,0,0.85);
+    background: rgba(0,0,0,0.75);
     overflow:auto;
     padding-top:60px;
   }
@@ -151,8 +152,8 @@
     margin:auto;
     max-width: 90%;
     max-height: 85%;
-    border-radius: 20px;
-    box-shadow: 0 0 25px rgba(255,255,255,0.3);
+    border-radius: 25px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.4);
   }
   .img-close {
     position: absolute;
