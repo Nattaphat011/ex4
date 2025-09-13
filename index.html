@@ -7,21 +7,259 @@
   <link rel="icon" href="https://img.icons8.com/fluency/48/000000/brain.png"/>
  <style>
   @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;500;700&display=swap');
+    body {
+      font-family: 'Kanit', sans-serif;
+      background: linear-gradient(135deg, #dbeafe, #fce7f3, #fef9c3);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      color: #222;
+      line-height: 1.6;
+    }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
 
-  body {
-    margin: 0;
-    font-family: 'Kanit', sans-serif;
-    background: linear-gradient(135deg, #fce7f3, #e0f2fe, #ede9fe, #fef9c3);
-    background-size: 400% 400%;
-    animation: bgShift 12s ease infinite;
-    color: #444;
-    line-height: 1.7;
+    /* กล่อง container แบบ glassmorphism */
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #1e3a8a;
+      margin-bottom: 25px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: #334155;
+      border-left: 6px solid #6366f1;
+      padding-left: 12px;
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+
+    section {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 16px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      font-size: 1rem;
+      resize: vertical;
+      background: #f9fafb;
+      transition: border 0.2s;
+    }
+    textarea:focus, input:focus {
+      outline: none;
+      border: 1px solid #6366f1;
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    p em {
+      color: #475569;
+      font-size: 0.9rem;
+      background: #f1f5f9;
+      padding: 6px 10px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 25px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    button:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    }
+
+    a {
+      color: #2563eb;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+      /* รูปภาพหัวข้อหรือรูปที่ต้องการสไตล์เดียวกัน */
+img.goal-img {
+  display: block;
+  margin: 0 auto 20px;
+  width: 100%;          /* ให้กินความกว้างเต็ม container */
+  max-width: 350px;     /* แต่ไม่เกิน 500px บนจอใหญ่ */
+  height: auto;         /* คงอัตราส่วน */
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  object-fit: cover;
+  cursor: zoom-in; /* เปลี่ยนเคอร์เซอร์เป็นสัญลักษณ์ขยาย */
+}
+
+/* สไตล์สำหรับ modal รูปภาพ */
+.img-modal {
+  display: none; /* ซ่อน modal เริ่มต้น */
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.85);
+}
+
+.img-modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.img-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.img-close:hover {
+  color: #ff6b6b;
+}
+
+em {
+  display: block;
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+/* เพิ่มหลังโค้ด style เดิม */
+@media (max-width: 768px) {
+  .container {
+    margin: 20px 15px;
+    padding: 20px;
+    border-radius: 16px;
   }
-  @keyframes bgShift {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
   }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-top: 25px;
+    margin-bottom: 12px;
+  }
+
+  section {
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+
+  textarea,
+  input[type="text"] {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  img.goal-img {
+    max-width: 350px; /* ลดขนาดภาพบนจอเล็ก */
+  }
+
+  .img-modal-content {
+    max-width: 95%;
+    max-height: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .container {
+    margin: 15px 10px;
+    padding: 15px;
+  }
+
+  section {
+    padding: 12px;
+  }
+
+  textarea,
+  input[type="text"] {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  button {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+
+  img.goal-img {
+    max-width: 320px;
+  }
+}
  .floating-img {
       display: block;
       margin: 0 auto 25px auto;
@@ -33,154 +271,6 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-12px); }
   }
-  /* Hero Section */
-  .hero {
-    text-align: center;
-    padding: 80px 20px 60px;
-    background: linear-gradient(145deg, rgba(254,205,211,0.6), rgba(209,213,255,0.6));
-    backdrop-filter: blur(12px);
-    border-bottom-left-radius: 60px;
-    border-bottom-right-radius: 60px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  }
-  .hero h1 {
-    font-size: 2.7rem;
-    color: #374151;
-    margin-bottom: 15px;
-  }
-  .hero p {
-    font-size: 1.2rem;
-    color: #6b7280;
-  }
-
-  /* Container */
-  .container {
-    max-width: 950px;
-    margin: -40px auto 50px;
-    padding: 30px;
-    border-radius: 30px;
-    background: rgba(255,255,255,0.85);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  }
-
-  /* Sections */
-  section {
-    background: #fff;
-    border: 3px solid transparent;
-    border-radius: 22px;
-    padding: 25px;
-    margin-bottom: 35px;
-    background-clip: padding-box;
-    position: relative;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-  }
-  section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 22px;
-    padding: 2px;
-    background: linear-gradient(135deg, #fbcfe8, #a5f3fc, #c4b5fd, #fde68a);
-    -webkit-mask: 
-      linear-gradient(#fff 0 0) content-box, 
-      linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-            mask-composite: exclude;
-  }
-
-  h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    background: linear-gradient(90deg,#f472b6,#60a5fa,#a78bfa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  textarea, input[type="text"] {
-    width: 100%;
-    padding: 14px;
-    border-radius: 14px;
-    border: 1px solid #e5e7eb;
-    background: #fafafa;
-    color: #374151;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: 1rem;
-    transition: all 0.3s;
-  }
-  textarea:focus, input:focus {
-    outline: none;
-    border: 1px solid #a78bfa;
-    box-shadow: 0 0 8px rgba(167,139,250,0.4);
-    background: #fff;
-  }
-
-  button {
-    display: block;
-    width: 100%;
-    padding: 15px;
-    border: none;
-    border-radius: 20px;
-    background: linear-gradient(135deg,#f9a8d4,#93c5fd,#c4b5fd,#fde68a);
-    background-size: 250% 250%;
-    color: #374151;
-    font-size: 1.15rem;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 25px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    animation: gradientShift 8s ease infinite;
-    transition: transform 0.2s;
-  }
-  button:hover {
-    transform: scale(1.04);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
-  }
-
-  /* Image Modal */
-  img.goal-img {
-    display: block;
-    margin: 0 auto 20px;
-    width: 100%;
-    max-width: 180px;
-    border-radius: 25px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-    cursor: zoom-in;
-  }
-
-  .img-modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left:0;top:0;width:100%;height:100%;
-    background: rgba(0,0,0,0.75);
-    overflow:auto;
-    padding-top:60px;
-  }
-  .img-modal-content {
-    display: block;
-    margin:auto;
-    max-width: 90%;
-    max-height: 85%;
-    border-radius: 25px;
-    box-shadow: 0 0 20px rgba(255,255,255,0.4);
-  }
-  .img-close {
-    position: absolute;
-    top: 20px; right: 40px;
-    font-size: 45px; font-weight: bold;
-    color:#fff;
-    cursor: pointer;
-  }
-  .img-close:hover {color:#f87171;}
-
-  em {
-  display: block;
-  text-align: center;
-  margin-bottom: 15px;
-  font-size: 0.9em;
-  color: #555;
-}
   </style>
 </head>
 <body>
@@ -192,7 +282,7 @@
      id="myImage">
 <!-- หมายเหตุสามารถแตะรูปภาพเพื่อขยายภาพได้ -->
  <em> (สามารถแตะรูปภาพเพื่อขยายภาพได้) </em>
-  <!-- โลโก้ -->
+<!-- โลโก้ -->
   <img src="images/4.png"
        alt="โลโก้วิทยาลัย"
        class="floating-img">
@@ -205,52 +295,74 @@
 
   <h1>ฝึกคิดวิเคราะห์และแก้ปัญหา</h1>
 
-     <!-- เกม 1 -->
-    <section>
-      <h2>1. ถอยหลัง 3 ก้าว</h2>
-      <textarea id="step1" placeholder="ก้าว 1: มุมมองของคุณ"></textarea>
-      <textarea id="step2" placeholder="ก้าว 2: มุมมองของอีกฝ่าย"></textarea>
-      <textarea id="step3" placeholder="ก้าว 3: มุมมองของคนนอก"></textarea>
-      <p>คุณเข้าใจถึงความคิดแนวทางมากขึ้นหรือไม่?</p>
-      <label><input type="radio" name="understand" value="yes"> ใช่</label>
-      <label><input type="radio" name="understand" value="no"> ไม่ใช่</label>
-    </section>
+  <!-- เกม 1: ถอยหลัง 3 ก้าว -->
+  <section>
+    <h2>1. ถอยหลัง 3 ก้าว (3-step Backward Thinking)</h2>
+    <p>ให้ผู้ใช้จินตนาการว่าตนเองยืนอยู่ต่อหน้าของปัญหา แล้วให้คุณนั้นถอยหลัง 3ก้าว เพื่อมองในมุมมองที่ต่างออกไป และให้คุณตอบความคิดของคุณในแต่ละมุมมองว่าคุณจะทำอย่างไร
+เขียนมุมมองของคุณและอีกฝ่ายในสถานการณ์ปัจจุบัน จากนั้นลองมองสถานการณ์จากมุมมองของคนนอก</p>
+    <textarea id="step1" placeholder="ก้าว 1: มุมมองของคุณ"></textarea>
+    <textarea id="step2" placeholder="ก้าว 2: มุมมองของอีกฝ่าย"></textarea>
+    <textarea id="step3" placeholder="ก้าว 3: มุมมองของคนนอก"></textarea>
+  <br>
+  <!--แบบสอบถาม ใช่ หรือ ไม่ใช่ คุณเข้าใจถึงความคิดแนวทางมากขึ้นหรือไม่ -->
+    <h2>แบบสอบถาม</h2>
+    <p>คุณเข้าใจถึงความคิดแนวทางมากขึ้นหรือไม่?</p>
+    <label><input type="radio" name="understand" value="yes"> ใช่</label>
+    <label><input type="radio" name="understand" value="no"> ไม่ใช่</label>
+    <!-- หมายเหตุ -->
+    <p><em>จากการตอบข้อมูลในแต่ละมุมมอง คุณเข้าใจถึงความคิด แนวทางมากขึ้นหรือไม่ มันอาจช่วยให้คุณลดอคติทางอารมณ์ และช่วยให้คุณมองปัญหาได้หลายมุมมองด้วยนะ คุณรู้สึกเข้าใจถึงปัญหานั้นมากขึ้นบ้างไหม</em></p>
+  </section>
 
-    <!-- เกม 2 -->
-    <section>
-      <h2>2. ข้อดี-ข้อเสีย</h2>
-      <textarea id="pros" placeholder="ข้อดีของวิธีแก้ปัญหา"></textarea>
-      <textarea id="cons" placeholder="ข้อเสียของวิธีแก้ปัญหา"></textarea>
-    </section>
 
-    <!-- เกม 3 -->
-    <section>
-      <h2>3. เกม 5 ทำไม?</h2>
-      <textarea id="why1" placeholder="ทำไมครั้งที่ 1"></textarea>
-      <textarea id="why2" placeholder="ทำไมครั้งที่ 2"></textarea>
-      <textarea id="why3" placeholder="ทำไมครั้งที่ 3"></textarea>
-      <textarea id="why4" placeholder="ทำไมครั้งที่ 4"></textarea>
-      <textarea id="why5" placeholder="ทำไมครั้งที่ 5"></textarea>
-    </section>
+  <!-- เกม 2: ข้อดี-ข้อเสีย + มุมมองเวลา -->
+  <section>
+    <h2>2. ข้อดี-ข้อเสีย + มุมมองเวลา</h2>
+    <textarea id="pros" placeholder="ข้อดีของวิธีแก้ปัญหา"></textarea>
+    <textarea id="cons" placeholder="ข้อเสียของวิธีแก้ปัญหา"></textarea>
+  </section>
 
-    <!-- เกม 4 -->
-    <section>
-      <h2>4. การสะท้อนผล</h2>
-      <textarea id="learn" placeholder="คุณได้เรียนรู้อะไรเกี่ยวกับตัวเอง?"></textarea>
-      <textarea id="best" placeholder="วิธีไหนที่ได้ผลดีที่สุดสำหรับคุณ?"></textarea>
-      <textarea id="next" placeholder="ครั้งต่อไปคุณจะลองทำอะไรใหม่ ๆ บ้าง?"></textarea>
-    </section>
+  <!-- เกม 3: 5 ทำไม? -->
+  <section>
+    <h2>3. เกม 5 ทำไม? (5 Whys)</h2>
+    <p>ให้คุณนึกถึงปัญหานั้นที่คุณกำลังประสบอยู่ และให้ตั้งคำถามกับตัวเองว่า “ทำไม” ต่อเนื่องกัน 5 ครั้ง</p>
+    <textarea id="why1" placeholder="ทำไมครั้งที่ 1"></textarea>
+    <textarea id="why2" placeholder="ทำไมครั้งที่ 2"></textarea>
+    <textarea id="why3" placeholder="ทำไมครั้งที่ 3"></textarea>
+    <textarea id="why4" placeholder="ทำไมครั้งที่ 4"></textarea>
+    <textarea id="why5" placeholder="ทำไมครั้งที่ 5"></textarea>
+    <p><em>หากคุณสามารถถามและตอบตัวเองได้ครบ นั่นหมายถึงว่าคุณเข้าใจถึงรากเหง้าของปัญหา และนี่เป็นวิธีการแก้ปัญหาที่ไม่ได้แก้ที่ปลายเหตุ แต่เป็นการแก้ไขปัญหาโดยใช้จากสาเหตุที่เกิดขึ้นเลย</em></p>
+  </section>
 
-    <!-- เกม 5 -->
-    <section>
-      <h2>5. เกมผ่อนคลาย</h2>
-      <input type="text" id="level" placeholder="1-10">
-    </section>
+  <!-- เกม 4: What-If Game -->
+  <!-- <section>
+    <h2>4. เกมสมมติฐาน (What-If Game)</h2>
+    <textarea id="whatif" placeholder="คำตอบและเหตุผล"></textarea>
+  </section> -->
 
-    <!-- ปุ่มส่ง -->
-    <button id="submitBtn">บันทึกผล</button>
-  </div>
+  <!-- เกม 5: Reflection -->
+  <section>
+    <h2>4. การสะท้อนผล (Reflection)</h2>
+    <p>หลังจากที่คุณทำกิจกรรมต่างๆด้านบนไปข้างต้น คุณช่วยตอบฉันหน่อยได้ไหมคะ ว่าเป็นอย่างไรบ้าง</p>
+    <textarea id="learn" placeholder="คุณได้เรียนรู้อะไรเกี่ยวกับตัวเอง?"></textarea>
+    <textarea id="best" placeholder="วิธีไหนที่ได้ผลดีที่สุดสำหรับคุณ?"></textarea>
+    <textarea id="next" placeholder="ครั้งต่อไปคุณจะลองทำอะไรใหม่ ๆ บ้าง?"></textarea>
+  </section>
 
+  <!-- เกมผ่อนคลาย -->
+  <section>
+    <h2>5. เกมผ่อนคลาย: หาสิ่งของที่ซ่อนอยู่</h2>
+    <!-- กดลิงค์เปิดไปอีกหน้าแปะลิงค์ไม่เอา ifame -->
+    <p>เล่นเกมหาสิ่งของที่ซ่อนอยู่เพื่อผ่อนคลายจิตใจกันเถอะ!</p>
+    <a href="https://th.crazygames.com/embed/seek-find-hidden-object-game" target="_blank">คลิกที่นี่เพื่อเล่นเกม</a>
+    <!-- บอกความรู้สึกหลังจากเล่นแล้ว ช่วยคลายเครียดในระดับไหน -->
+    <br><p>หลังจากเล่นเกมนี้แล้ว คุณรู้สึกผ่อนคลายขึ้นในระดับไหน (1-10)</p>
+    <input type="text" id="level" placeholder="1-10">
+    <p><em>หมายเหตุ: การเล่นเกมนี้เป็นเพียงกิจกรรมเสริมเพื่อช่วยผ่อนคลายจิตใจเท่านั้น ไม่ได้มีวัตถุประสงค์ในการแก้ปัญหาโดยตรง</em></p>
+  </section>
+
+  <!-- ปุ่มส่งข้อมูลไป GAS -->
+  <button id="submitBtn">บันทึกผล</button>
+</div>
 
 <script>
   const webAppUrl = 'https://script.google.com/macros/s/AKfycbzgHWh2fejs_74UXfHIscDbfC95OOK5s_RuGBKopoGx5o6h57GK0FmKEBFsZFb7vXaj/exec';
@@ -313,7 +425,7 @@
   //   }
   // }
 
-   const modal = document.getElementById('imgModal');
+  const modal = document.getElementById('imgModal');
   const img = document.getElementById('myImage');
   const modalImg = document.getElementById('imgModalContent');
   const caption = document.getElementById('imgCaption');
